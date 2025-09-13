@@ -20,10 +20,16 @@
           <img src="/assets/images/logo.png" alt="{{ site.title }} logo" class="site-logo-centered" />
         </a>
       </div>
+
       <nav class="main-nav container" role="navigation" aria-label="Main">
         <a href="/">Home</a>
         <a href="/tags/">Tags</a>
         <a href="/about/">About</a>
+
+        <div class="search-wrap nav-search" aria-hidden="false">
+          <input id="site-search" class="site-search" type="search" placeholder="Search headlines, topics, authors..." aria-label="Search the site" />
+          <div id="search-results" class="search-results" hidden></div>
+        </div>
       </nav>
     </header>
 
