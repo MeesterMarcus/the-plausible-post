@@ -4,7 +4,7 @@ date: 2025-09-13
 layout: article.njk
 author: "Business Desk"
 tags: [business, tech, satire]
-image: "/assets/images/aspiration.png"
+image: "/assets/images/aspiration.webp"
 disclaimer: "Satire — not factual"
 ---
 

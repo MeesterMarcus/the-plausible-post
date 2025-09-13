@@ -4,7 +4,7 @@ date: 2025-09-13
 layout: article.njk
 author: "Food Desk"
 tags: [local, culture]
-image: "/assets/images/croissant.png"
+image: "/assets/images/croissant.webp"
 editorsPick: true
 disclaimer: "Satire — not factual"
 ---

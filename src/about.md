@@ -4,7 +4,7 @@ date: 2025-09-13
 layout: article.njk
 author: "The Editorial Board"
 tags: [about, mission, satire]
-image: "/assets/images/logo.png"
+image: "/assets/images/logo.webp"
 disclaimer: "Satire — not factual"
 ---
 

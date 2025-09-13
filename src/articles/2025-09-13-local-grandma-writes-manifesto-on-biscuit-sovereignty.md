@@ -4,7 +4,7 @@ date: 2025-09-13
 layout: article.njk
 author: "Culture Desk"
 tags: [local, tech, culture]
-image: "/assets/images/biscuits.png"
+image: "/assets/images/biscuits.webp"
 disclaimer: "Satire — not factual"
 ---
 
