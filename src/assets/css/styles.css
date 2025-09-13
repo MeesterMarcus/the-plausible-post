@@ -3,7 +3,7 @@
 
 /* Variables */
 :root{
-  --max-width: 1100px;
+  --max-width: 1280px;
   --accent: #c62828;
   --accent-2: #8b1d1d;
   --muted: #666d76;
@@ -14,7 +14,7 @@
   --radius: 8px;
   --shadow: 0 6px 20px rgba(12,18,24,0.06);
   --thin-rule: rgba(12,18,24,0.06);
-  --reading-width: 70ch;
+  --reading-width: 75ch;
 }
 
 /* Resets */
@@ -35,7 +35,7 @@ body{
 .container{
   max-width:var(--max-width);
   margin:0 auto;
-  padding:0 1.25rem;
+  padding:0 0.75rem; /* tightened horizontal padding so main content takes more space */
 }
 
 /* Utility/topbar - thin band like a newspaper edition line */
@@ -303,6 +303,21 @@ body{
   color:#111827;
 }
 
+/* Reduce lead story image height so the featured image isn't overwhelming */
+.article-list > .teaser:first-child .teaser-media img{
+  height:320px;
+  width:100%;
+  object-fit:cover;
+  object-position:center;
+  border-radius:6px;
+}
+
+/* Slightly larger on wide screens but still smaller than the default 420px */
+@media (min-width: 1000px) {
+  .article-list > .teaser:first-child .teaser-media img{
+    height:360px;
+  }
+}
 /* teaser internals */
 /* teaser-title is defined earlier for the homepage layout; avoid duplicate overrides here */
 .teaser-title a{ color:inherit; }
@@ -473,10 +488,68 @@ body{
   border-radius:8px;
   box-shadow: var(--shadow);
 }
+
+/* Title + list */
 .ep-title{ margin:0 0 .5rem 0; font-size:1.05rem; font-weight:700; }
 .ep-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.6rem; }
-.ep-item a{ font-weight:700; color:#0b1220; text-decoration:none; }
+
+/* Each item: clickable row with optional thumbnail */
+.ep-item { margin:0; }
+.ep-link{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+  color:inherit;
+  border-radius:6px;
+  overflow: hidden; /* Ensure content within the link is contained */
+}
+.ep-link:hover{ background: rgba(11,17,26,0.02); transform:translateY(-1px); }
+
+/* Thumbnail */
+.ep-thumb{
+  margin: 10px; /* Removed default margins from figure element */
+  width:96px;
+  height:72px;
+  flex: 0 0 96px;
+  overflow:hidden;
+  border-radius:6px;
+  background:var(--thin-rule);
+  display:block;
+}
+.ep-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* Text next to the thumbnail */
+.ep-text{
+  display:flex;
+  flex-direction:column;
+  gap:0.15rem;
+  flex: 1; /* Allow text to take up remaining space */
+  min-width: 0; /* Prevent flex item from overflowing */
+  text-align: left;
+}
+.ep-item-title{
+  font-weight:700;
+  color:#0b1220;
+  line-height:1.1;
+  font-size:0.95rem;
+  display:block;
+  /* Removed max-width to allow flex:1 on parent to control width */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .ep-item .small{ color:var(--muted); font-size:.82rem; margin-top:.15rem; }
+
+/* Responsive: smaller thumbs on very narrow sidebars */
+@media (max-width: 999px) {
+  .ep-thumb{ width:72px; height:54px; flex:0 0 72px; }
+  /* Removed max-width for ep-item-title here as well */
+}
 
 /* Sidebar small adjustments */
 .sidebar{ padding:0; }

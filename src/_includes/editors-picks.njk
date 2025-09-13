@@ -6,8 +6,17 @@
     {% for post in collections.articles %}
       {% if post.data.editorsPick and count < 3 %}
         <li class="ep-item">
-          <a href="{{ post.url }}">{{ post.data.title }}</a>
-          <div class="small muted">{{ post.date | readableDate }}</div>
+          <a class="ep-link" href="{{ post.url }}">
+            {% if post.data.image %}
+            <figure class="ep-thumb">
+              <img src="{{ post.data.image }}" alt="{{ post.data.title }}" />
+            </figure>
+            {% endif %}
+            <div class="ep-text">
+              <span class="ep-item-title">{{ post.data.title }}</span>
+              <div class="small muted">{{ post.date | readableDate }}</div>
+            </div>
+          </a>
         </li>
         {% set count = count + 1 %}
       {% endif %}
@@ -17,8 +26,17 @@
     {% if count == 0 %}
       {% for post in collections.articles | slice(0,3) %}
         <li class="ep-item">
-          <a href="{{ post.url }}">{{ post.data.title }}</a>
-          <div class="small muted">{{ post.date | readableDate }}</div>
+          <a class="ep-link" href="{{ post.url }}">
+            {% if post.data.image %}
+            <figure class="ep-thumb">
+              <img src="{{ post.data.image }}" alt="{{ post.data.title }}" />
+            </figure>
+            {% endif %}
+            <div class="ep-text">
+              <span class="ep-item-title">{{ post.data.title }}</span>
+              <div class="small muted">{{ post.date | readableDate }}</div>
+            </div>
+          </a>
         </li>
       {% endfor %}
     {% endif %}
