@@ -1,0 +1,14 @@
+---
+layout: "base.njk"
+title: Tags
+---
+<section class="container">
+  <h2>Tags</h2>
+  <ul class="tag-list">
+    {% for tag in collections.tagList %}
+      <li><a href="/tags/{{ tag | slug }}/">{{ tag }}</a></li>
+    {% else %}
+      <li>No tags yet.</li>
+    {% endfor %}
+  </ul>
+</section>

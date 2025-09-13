@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{{ title or site.title }}</title>
+    <meta name="description" content="{{ site.description }}" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
+        <p class="site-tagline">{{ site.description }}</p>
+      </div>
+      <nav class="main-nav container">
+        <a href="/">Home</a>
+        <a href="/tags/">Tags</a>
+        <a href="/about/">About</a>
+      </nav>
+    </header>
+
+    <main class="container content" role="main">
+      {{ content | safe }}
+    </main>
+
+    <footer class="site-footer container">
+      <p>&copy; {{ "now" | date("yyyy") }} {{ site.title }}. All satire intended.</p>
+    </footer>
+  </body>
+</html>

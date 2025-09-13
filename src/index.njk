@@ -1,0 +1,20 @@
+---
+layout: "base.njk"
+title: Home
+---
+<section class="hero container">
+  <h2 class="lead">Latest Headlines</h2>
+</section>
+
+<section class="article-list container">
+  {% for post in collections.articles %}
+  <article class="teaser">
+    <h3 class="teaser-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+    <p class="teaser-meta"><time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time> — {{ post.data.author or "Staff Writer" }}</p>
+    <p class="teaser-excerpt">{{ post.templateContent | striptags | truncate(200, true) }}</p>
+    <p><a href="{{ post.url }}" class="read-more">Read</a></p>
+  </article>
+  {% else %}
+  <p>No articles yet.</p>
+  {% endfor %}
+</section>

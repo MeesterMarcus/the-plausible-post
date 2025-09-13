@@ -1,0 +1,25 @@
+---
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: "/tags/{{ tag | slug }}/index.html"
+layout: "base.njk"
+title: "Tag: {{ tag }}"
+---
+<section class="container">
+  <h2>Tag: {{ tag }}</h2>
+
+  <ul class="tag-articles">
+    {% for post in collections.articles %}
+      {% if post.data.tags and (tag in post.data.tags) %}
+        <li>
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+          <div class="teaser-meta"><time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time> — {{ post.data.author or "Staff Writer" }}</div>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <p><a href="/tags/">All tags</a></p>
+</section>

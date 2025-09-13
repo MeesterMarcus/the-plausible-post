@@ -1,0 +1,19 @@
+{
+  "name": "the-plausible-post",
+  "version": "0.1.0",
+  "description": "A news-satire site built with Eleventy",
+  "main": "src/index.njk",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "dev": "eleventy --serve --quiet"
+  },
+  "keywords": ["eleventy","static-site","news","satire"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0",
+    "luxon": "^3.3.0",
+    "@11ty/eleventy-plugin-rss": "^4.0.0"
+  }
+}
