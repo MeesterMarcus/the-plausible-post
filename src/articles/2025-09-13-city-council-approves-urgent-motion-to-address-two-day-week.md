@@ -4,7 +4,7 @@ date: 2025-09-13
 layout: article.njk
 author: "Staff Writer"
 tags: [local, politics]
-image: "/assets/images/pizza.svg"
+image: "/assets/images/council.png"
 disclaimer: "Satire — not factual"
 ---
 

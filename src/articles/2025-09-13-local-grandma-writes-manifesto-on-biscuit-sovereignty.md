@@ -4,7 +4,7 @@ date: 2025-09-13
 layout: article.njk
 author: "Culture Desk"
 tags: [local, tech, culture]
-image: "/assets/images/pizza.svg"
+image: "/assets/images/biscuits.png"
 disclaimer: "Satire — not factual"
 ---
 
