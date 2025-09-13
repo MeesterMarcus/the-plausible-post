@@ -79,13 +79,13 @@ body{
   padding: .5rem 0;
 }
 .site-logo-centered {
-  width: 220px;
+  width: 280px; /* Increased width */
   height: auto;
   display:block;
   margin: 0 auto;
 }
 @media (max-width: 700px) {
-  .site-logo-centered { width: 140px; }
+  .site-logo-centered { width: 180px; } /* Increased width for smaller screens */
 }
 .site-logo{
   width:64px;
