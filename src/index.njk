@@ -11,10 +11,24 @@ title: Home
     <section class="article-list">
       {% for post in collections.articles %}
       <article class="teaser">
-        <h3 class="teaser-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
-        <p class="teaser-meta"><time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time> — {{ post.data.author or "Staff Writer" }}</p>
-        <p class="teaser-excerpt">{{ post.templateContent | striptags | truncate(200, true) }}</p>
-        <p><a href="{{ post.url }}" class="read-more">Read</a></p>
+        <div class="teaser-content">
+          <h3 class="teaser-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+
+          {% if post.data.description %}
+          <p class="teaser-lede">{{ post.data.description }}</p>
+          {% else %}
+          <p class="teaser-lede">{{ post.templateContent | striptags | truncate(200, true) }}</p>
+          {% endif %}
+
+          <p class="teaser-meta"><time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time></p>
+          <p class="teaser-author">{{ post.data.author or "Staff Writer" }}</p>
+        </div>
+
+        {% if post.data.image %}
+        <figure class="teaser-media">
+          <a href="{{ post.url }}"><img src="{{ post.data.image }}" alt="{{ post.data.title }}" /></a>
+        </figure>
+        {% endif %}
       </article>
       {% else %}
       <p>No articles yet.</p>

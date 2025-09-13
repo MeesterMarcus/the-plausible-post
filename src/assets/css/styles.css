@@ -70,6 +70,23 @@ body{
   text-decoration:none;
   color:inherit;
 }
+
+/* Centered masthead variant (logo-only) */
+.masthead-center {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding: .5rem 0;
+}
+.site-logo-centered {
+  width: 220px;
+  height: auto;
+  display:block;
+  margin: 0 auto;
+}
+@media (max-width: 700px) {
+  .site-logo-centered { width: 140px; }
+}
 .site-logo{
   width:64px;
   height:auto;
@@ -132,14 +149,18 @@ body{
 }
 
 /* Homepage layout: lead story + grid (with right-column sidebar) */
+/* Increase left column so articles take more horizontal space */
 .home-grid{
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 3fr 360px; /* left (articles) larger, right (sidebar) fixed */
   gap: 1rem;
   padding: 1rem 0 2rem 0;
   align-items: start;
 }
 .articles-main { }
+@media (max-width: 999px){
+  .home-grid{ grid-template-columns: 1fr; }
+}
 
 /* Article list sits inside the main column; teasers stack vertically */
 .article-list{
@@ -170,16 +191,64 @@ body{
   .article-list{ grid-template-columns: 1fr; }
 }
 
-/* teaser cards */
+/* teaser cards — right-side image with left text column (left column increased) */
 .teaser{
   background:var(--card);
   padding:1rem;
   border-radius:8px;
   border:1px solid var(--thin-rule);
   box-shadow:var(--shadow);
-  display:flex;
-  flex-direction:column;
-  gap:.5rem;
+  display:grid;
+  grid-template-columns: 1fr 360px; /* narrower image column => wider text column */
+  gap:1.25rem;
+  align-items:center;
+  overflow: hidden;
+}
+
+/* Content column (left) */
+.teaser-content { display:flex; flex-direction:column; gap:.6rem; }
+.teaser-title{
+  margin: 0 0 .25rem 0;
+  font-size: 1.6rem;
+  font-family: var(--font-serif);
+  line-height: 1.18;
+  letter-spacing: -0.4px;
+  color: #081426;
+  font-weight: 800;
+}
+.teaser-title a{ color:inherit; text-decoration:none; }
+.teaser-lede{ margin:0; color:#374151; font-size:1.02rem; max-width:48ch; }
+.teaser-meta{ margin: .5rem 0 0 0; color:var(--muted); font-size:.92rem; }
+.teaser-author{ margin: .15rem 0 0 0; font-weight:700; color:#111827; }
+
+/* Media column (right) */
+.teaser-media{ margin:0; display:block; overflow:hidden; border-radius:6px; }
+.teaser-media img{
+  display:block;
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:6px;
+}
+
+/* Mobile / narrow screens: stack with image below content and smaller image height */
+@media (max-width: 999px) {
+  .teaser{
+    grid-template-columns: 1fr;
+  }
+  .teaser-media img{
+    height:220px;
+    width:100%;
+  }
+}
+
+/* Smaller devices: tighter padding */
+@media (max-width: 599px) {
+  .teaser{ padding:.75rem; gap:.75rem; }
+  .teaser-title{ font-size:1.25rem; }
+  .teaser-lede{ font-size:.95rem; }
+  .teaser-media img{ height:180px; }
 }
 
 /* Lead story: make first teaser big and prominent when inside .article-list */
@@ -204,7 +273,7 @@ body{
 }
 
 /* teaser internals */
-.teaser-title{ margin:.25rem 0; font-size:1.125rem; font-weight:700; color:#081426; }
+/* teaser-title is defined earlier for the homepage layout; avoid duplicate overrides here */
 .teaser-title a{ color:inherit; }
 .teaser-meta{ margin:0; color:var(--muted); font-size:.85rem; }
 .teaser-excerpt{ margin:.5rem 0; color:#2b3036; flex:1; }
@@ -226,30 +295,84 @@ body{
 }
 .read-more:hover{ background:rgba(198,40,40,0.04); }
 
-/* Article view (single article) - newspaper reading styles */
+/* Article view (single article) - featured masthead layout */
 .article{
-  padding:1.25rem 0 2rem 0;
+  padding:0;
+  margin:0;
 }
-.article-header{
-  border-bottom:1px solid var(--thin-rule);
-  padding-bottom:.75rem;
-  margin-bottom:1rem;
+.article-masthead{
+  background: #0b0b0b;
+  color: #fff;
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
 }
-.article-title{
-  font-family:var(--font-serif);
-  font-size:2.25rem;
-  margin:0 0 .35rem 0;
-  line-height:1.05;
-  font-weight:700;
+.masthead-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+.masthead-left{
+  padding-right: 1rem;
+}
+/* Masthead headline (used only when .article-masthead is present) */
+.article-masthead .article-title{
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  margin: 0 0 .5rem 0;
+  line-height: 1;
+  font-weight: 900;
+  color: #fff;
+}
+
+/* Default article page title styling (for standard article layout) */
+.article-header .article-title{
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  margin: 0 0 .35rem 0;
+  line-height: 1.06;
+  font-weight: 700;
+  color: #081426; /* dark title color for readability */
+}
+.article-lede{
+  color: #cbd5d9;
+  font-size: 1.125rem;
+  max-width: 48ch;
+  margin-bottom: 1rem;
 }
 .article-meta{
-  color:var(--muted);
-  font-size:.95rem;
-  margin:0;
+  color: #9ca3af;
+  font-size: .95rem;
+  margin: 0;
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Masthead image column */
+.masthead-right{
   display:flex;
-  gap:.5rem;
   align-items:center;
-  flex-wrap:wrap;
+  justify-content:center;
+}
+.masthead-right img{
+  width:100%;
+  height:auto;
+  max-height:420px;
+  object-fit:cover;
+  border-radius:4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+.credit{ color:#9ca3af; font-size:.85rem; margin-top:.5rem; }
+
+/* Larger layout: left text column + wide image on the right */
+@media (min-width: 1000px) {
+  .masthead-grid{
+    grid-template-columns: 1fr 620px;
+  }
+  .article-title{ font-size: 3.5rem; }
+  .article-lede{ font-size: 1.25rem; }
 }
 
 /* article hero image treatment */
