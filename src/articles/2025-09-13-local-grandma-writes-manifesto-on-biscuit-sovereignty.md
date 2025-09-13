@@ -8,18 +8,16 @@ image: "/assets/images/pizza.svg"
 disclaimer: "Satire — not factual"
 ---
 
-Martha Lane, 78, who has quietly been perfecting her buttery, flake-apart biscuits for five decades, became an unlikely front-row critic of generative AI this week after a popular recipe app published a "regional biscuit technique" that Lane insists is a very specific, very hers.
+Martha Lane, 78, has spent half a century perfecting biscuits that crumble like memories and taste like Sunday mornings. This week she declared an unprecedented campaign against generative AI after a recipe app published what it curiously labeled a "regional biscuit technique" — a recipe Lane maintains was cribbed from her handwritten index cards.
 
-"They put my soul in a JSON file and called it 'Southern-style Base,'" Lane said at a packed community center on Saturday, waving a spatula like a placard. "You can't just scrape fifty years of love and call it an algorithmic suggestion."
+"They turned my grandmother's notes into a filter and called it 'Regional Flair,'" Lane told a crowd of supporters while brandishing a butter knife like a gavel. "These bots don't know bad coffee or the lullaby somebody hummed while folding dough."
 
-Lane's response has been both practical and performative: she composed a short manifesto — equal parts cooking notes and civic poetry — urging "biscuit sovereignty," then organized a hands-on workshop titled "How to Tell if a Biscuit Was Made by a Person." The event included side-by-side tastings where attendees compared store-bought biscuits, an app-generated "classic" produced by copying public recipes, and Lane's own warm batch.
+Lane staged what she called a "biscuit intervention" at the community center, forcing three local influencers to sample biscuits while answering probing questions about intent, provenance, and whether their content had ever been shared by their nephew. "If your recipe cannot tell me a story about the oven, it's suspicious," Lane said.
 
-The workshop's curriculum leaned surprisingly modern. Volunteers taught a simple three-step test for "authenticity": smell, texture, and an interview with the cook. Attendees were instructed to ask whether the maker had ever burned a tray, cried into a batter, or told a story while stirring — non-algorithmic behaviors that, according to Lane, are the secret ingredients.
+Her manifesto mixes practical steps (always use lard in winter) with theatrical demands: she wants recipe platforms to include a "made-by" label (human, hybrid, synthetic) and to require provenance for anything that claims 'family recipe.' She also suggested that restaurants that can prove human-authored recipes be eligible for a modest heritage grant.
 
-Local tech commentator Ravi Nair, who stopped by the workshop expecting satire and left with crumbs on his sleeve, offered a cautious take: "There's a real conversation here about attribution and cultural respect. But also, the biscuits are excellent and might give the AI models something to aspire to."
+"People ask me why I'm being dramatic," Lane said. "But recipes carry memory. The machines can spit directions, but they can't inherit patience."
 
-Lane's manifesto proposes a modest policy ask: that companies labeling generated recipes should include a "made-by" field — human, hybrid, or synthetic — and that restaurants receiving a "human-authenticated" tag be eligible for a local heritage grant. "If you want to move into the meat-and-potatoes of copyright, do it," she told reporters. "But until then, at least ask whose grandma taught them."
+Local journalists noted that the controversy raised thorny questions about attribution, cultural appropriation, and whether the models should be required to credit Living Grandmas — a proposal one tech PR firm called "unscalable but delightful." An aggrieved startup responded with a blog post titled "AI: Democratizing Detritus," and later quietly removed the biscuit "technique" from its front page.
 
-The story has already caught flame online, with hobbyist cooks and journalists amplifying Lane's call. A hashtag, #BiscuitSovereignty, trended briefly on Saturday evening, used alternately to post pictures of flaky pastries and to roast a robotics startup that once tried to patent a "self-stirring spoon."
-
-Lane says she doesn't hate technology; she just doesn't want it to pretend to taste. "I'll show them what a human biscuit is," she said, offering a fresh one to a skeptical journalist. "You can't replicate memory in a mixer." The journalist accepted the biscuit, then promptly forgot his AI talking points.
+Lane promises more actions. She plans to open weekend "biscuit salons" and to release a zine called Scratchings that will contain interviews, diagrams, and marginalia. "If they want the algorithm to taste humanity, they can stand in my kitchen," she said, waving a flour-dusted rolling pin. "But they won't get my recipe. Not unless they send a handwritten letter and a pie."
