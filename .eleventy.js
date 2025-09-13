@@ -54,6 +54,26 @@ module.exports = function (eleventyConfig) {
     return doc.documentElement.textContent;
   });
  
+  // Custom filter to find an item in a collection based on a key-value pair
+  eleventyConfig.addFilter("find", (collection, query) => {
+    if (!collection || !Array.isArray(collection) || !query || typeof query !== 'object') {
+      return null;
+    }
+    const key = Object.keys(query)[0];
+    const value = query[key];
+ 
+    return collection.find(item => {
+      // Handle nested properties like { data: { isBreaking: true } }
+      let current = item;
+      const pathParts = key.split('.');
+      for (let i = 0; i < pathParts.length; i++) {
+        if (current === undefined || current === null) return false;
+        current = current[pathParts[i]];
+      }
+      return current === value;
+    });
+  });
+ 
   // Collection: articles from src/articles/*.md, newest first
   eleventyConfig.addCollection("articles", (collectionApi) => {
     return collectionApi

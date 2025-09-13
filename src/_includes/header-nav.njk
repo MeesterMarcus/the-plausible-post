@@ -1,22 +1,30 @@
 <div class="topbar container">
   <span class="small edition">Edition — {{ "now" | date("MMMM d, yyyy") }}</span>
 </div>
-
+ 
 <header class="site-header">
   <div class="container header-inner masthead-center">
     <a href="/" aria-label="{{ site.title }}">
       <img src="/assets/images/logo.png" alt="{{ site.title }} logo" class="site-logo-centered" />
     </a>
   </div>
-
+ 
   <nav class="main-nav container" role="navigation" aria-label="Main">
     <a href="/">Home</a>
     <a href="/tags/">Tags</a>
     <a href="/about/">About</a>
-
+ 
     <div class="search-wrap nav-search" aria-hidden="false">
       <input id="site-search" class="site-search" type="search" placeholder="Search headlines, topics, authors..." aria-label="Search the site" />
       <div id="search-results" class="search-results" hidden></div>
     </div>
   </nav>
 </header>
+ 
+{% set breakingArticle = collections.articles | find({ "data.isBreaking": true }) %}
+{% if breakingArticle %}
+<div class="breaking container">
+  <span class="breaking-label">BREAKING</span>
+  <a href="{{ breakingArticle.url }}" class="breaking-text">{{ breakingArticle.data.title }}</a>
+</div>
+{% endif %}
