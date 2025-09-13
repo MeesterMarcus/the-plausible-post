@@ -1,125 +1,348 @@
-/* Base resets and variables */
-:root {
-  --max-width: 900px;
+/* News-focused stylesheet for The Plausible Post */
+/* Objective: make the site read and feel more like a newspaper (The Onion / WaPo) */
+
+/* Variables */
+:root{
+  --max-width: 1100px;
   --accent: #c62828;
-  --muted: #6b6b6b;
-  --bg: #ffffff;
+  --accent-2: #8b1d1d;
+  --muted: #666d76;
+  --bg: #f8f8f7;
+  --card: #ffffff;
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-serif: "Merriweather", Georgia, "Times New Roman", serif;
+  --radius: 8px;
+  --shadow: 0 6px 20px rgba(12,18,24,0.06);
+  --thin-rule: rgba(12,18,24,0.06);
+  --reading-width: 70ch;
 }
 
+/* Resets */
 * { box-sizing: border-box; }
-
-body {
+html,body { height:100%; }
+body{
+  margin:0;
   font-family: var(--font-sans);
-  margin: 0;
-  color: #111;
-  background: #f7f7f7;
-  line-height: 1.6;
-  font-size: 16px;
+  background: var(--bg); /* subtle grey background for whole page */
+  color:#0b1220;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.65;
+  font-size:16px;
 }
 
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 1rem;
+/* Page container */
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 1.25rem;
 }
 
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
+/* Utility/topbar - thin band like a newspaper edition line */
+.topbar{
+  background:transparent;
+  font-size:.9rem;
+  color:var(--muted);
+  padding:.35rem 0;
+  text-align:right;
+  border-bottom:1px solid var(--thin-rule);
+}
 
-/* Header */
-.site-header {
-  background: #fff;
-  border-bottom: 1px solid #e6e6e6;
-  padding: 1rem 0;
+/* Masthead */
+/* Match the page background so header doesn't visually change on scroll */
+.site-header{
+  background: var(--bg);
+  padding:.5rem 0 .6rem 0;
+  border-bottom:1px solid var(--thin-rule);
 }
-.header-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: .25rem;
+.header-inner{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:1rem;
 }
-.site-title {
-  margin: 0;
-  font-size: 1.75rem;
-  letter-spacing: -0.5px;
-}
-.site-title a { color: #111; }
-.site-tagline {
-  margin: 0;
-  color: var(--muted);
-  font-size: .9rem;
-}
-.main-nav {
-  display: flex;
-  gap: 1rem;
-  padding: .75rem 0;
-}
-.main-nav a { color: var(--muted); font-size: .95rem; }
 
-/* Hero */
-.hero { padding: 1.25rem 0; }
-.lead { margin: 0; font-size: 1.25rem; color: #222; }
+/* Masthead with logo + brand */
+.masthead{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  text-decoration:none;
+  color:inherit;
+}
+.site-logo{
+  width:64px;
+  height:auto;
+  display:block;
+  border-radius:6px;
+  box-shadow: 0 6px 18px rgba(11,17,26,0.06);
+}
+.brand{
+  display:flex;
+  flex-direction:column;
+  line-height:1;
+}
+.site-title{
+  margin:0;
+  font-family: var(--font-serif);
+  font-weight:800;
+  letter-spacing:-1px;
+  font-size:1.6rem;
+  line-height:1;
+  text-transform:uppercase;
+  color:#081426;
+}
+.site-title a{ color:inherit; text-decoration:none; }
+.site-tagline{
+  margin:0;
+  color:var(--muted);
+  font-size:.825rem;
+  font-weight:700;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+}
 
-/* Article list / teasers */
-.article-list {
+/* Section navigation styled like newspaper sections */
+.main-nav{
+  display:flex;
+  gap:.5rem;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+.main-nav a{
+  font-size:.85rem;
+  color:var(--muted);
+  padding:.35rem .55rem;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:600;
+  letter-spacing:.3px;
+}
+.main-nav a:hover{ color:var(--accent); background:rgba(198,40,40,0.03); transform:translateY(-1px); }
+
+/* Breaking / top story band */
+.breaking{
+  background:linear-gradient(90deg, rgba(198,40,40,0.06), rgba(198,40,40,0));
+  border-top:1px solid rgba(198,40,40,0.06);
+  padding:.55rem 0;
+  margin:.75rem 0;
+  border-radius:6px;
+  font-weight:700;
+  color:#111;
+}
+
+/* Homepage layout: lead story + grid (with right-column sidebar) */
+.home-grid{
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
-  padding: 1rem 0;
+  gap: 1rem;
+  padding: 1rem 0 2rem 0;
+  align-items: start;
 }
-.teaser {
-  background: #fff;
-  padding: 1rem;
-  border: 1px solid #eee;
-}
-.teaser-title { margin: .25rem 0; font-size: 1.125rem; }
-.teaser-meta { margin: 0; color: var(--muted); font-size: .85rem; }
-.teaser-excerpt { margin: .5rem 0; color: #333; }
-.read-more { font-weight: 600; }
+.articles-main { }
 
-/* Article view */
-.article {
-  background: #fff;
-  padding: 1.25rem;
-  border: 1px solid #eee;
-}
-.article-title { margin: 0 0 .25rem 0; font-size: 1.5rem; }
-.article-meta { margin: 0; color: var(--muted); font-size: .9rem; }
-.article-hero img { max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 4px; }
-.article-body { margin-top: 1rem; }
-
-/* Footer */
-.site-footer { padding: 1rem 0; color: var(--muted); font-size: .9rem; }
-
-/* Tags */
-.tags a {
-  background: #f0f0f0;
-  padding: .15rem .4rem;
-  border-radius: 3px;
-  color: #333;
-  font-size: .85rem;
-  text-decoration: none;
-}
-.tags a:hover { background: #e6e6e6; }
-
-/* Utilities */
-.byline { font-style: italic; color: #222; }
-.credit { font-size: .8rem; color: var(--muted); margin-top: .5rem; }
-a:focus { outline: 3px solid rgba(198,40,40,0.25); outline-offset: 2px; }
-.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.article-hero { margin-top: 1rem; }
-
-/* Responsive */
-@media (min-width: 700px) {
-  .header-inner { flex-direction: row; justify-content: space-between; align-items: center; }
-  .article-list { grid-template-columns: repeat(2, 1fr); }
+/* Article list sits inside the main column; teasers stack vertically */
+.article-list{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 0;
 }
 
+/* Sidebar hidden on small screens; will become a fixed-width right column on wide screens */
+.sidebar{
+  display: none;
+}
+
+/* Larger screens: two-column layout with a 360px sidebar */
 @media (min-width: 1000px) {
-  :root { --max-width: 1100px; }
-  .article-list { grid-template-columns: 2fr 1fr; grid-auto-flow: dense; }
-  .teaser { display: flex; flex-direction: column; justify-content: space-between; }
+  .home-grid {
+    grid-template-columns: 2fr 360px;
+    gap: 1.25rem;
+  }
+  .sidebar{
+    display: block;
+  }
 }
 
-/* End of styles */
+/* On smaller screens fall back to single column */
+@media (max-width: 999px){
+  .article-list{ grid-template-columns: 1fr; }
+}
+
+/* teaser cards */
+.teaser{
+  background:var(--card);
+  padding:1rem;
+  border-radius:8px;
+  border:1px solid var(--thin-rule);
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+}
+
+/* Lead story: make first teaser big and prominent when inside .article-list */
+.article-list > .teaser:first-child{
+  grid-column: 1 / -1;
+  display:block;
+  padding:1.25rem;
+  border-radius:10px;
+  background:linear-gradient(180deg,#fff,#fff);
+  box-shadow:0 24px 60px rgba(11,17,26,0.08);
+  border:1px solid rgba(11,17,26,0.04);
+}
+.article-list > .teaser:first-child .teaser-title{
+  font-family: var(--font-serif);
+  font-size:2rem;
+  letter-spacing:-1px;
+  margin:.25rem 0;
+}
+.article-list > .teaser:first-child .teaser-excerpt{
+  font-size:1.05rem;
+  color:#111827;
+}
+
+/* teaser internals */
+.teaser-title{ margin:.25rem 0; font-size:1.125rem; font-weight:700; color:#081426; }
+.teaser-title a{ color:inherit; }
+.teaser-meta{ margin:0; color:var(--muted); font-size:.85rem; }
+.teaser-excerpt{ margin:.5rem 0; color:#2b3036; flex:1; }
+
+/* Media within teasers (if present in future) */
+.teaser img{ width:100%; height:auto; border-radius:6px; object-fit:cover; }
+
+/* 'Read' link as small pill and section indicator on the side */
+.read-more{
+  align-self:flex-start;
+  background:transparent;
+  color:var(--accent);
+  border:1px solid rgba(198,40,40,0.12);
+  padding:.35rem .6rem;
+  border-radius:6px;
+  font-weight:700;
+  text-decoration:none;
+  font-size:.9rem;
+}
+.read-more:hover{ background:rgba(198,40,40,0.04); }
+
+/* Article view (single article) - newspaper reading styles */
+.article{
+  padding:1.25rem 0 2rem 0;
+}
+.article-header{
+  border-bottom:1px solid var(--thin-rule);
+  padding-bottom:.75rem;
+  margin-bottom:1rem;
+}
+.article-title{
+  font-family:var(--font-serif);
+  font-size:2.25rem;
+  margin:0 0 .35rem 0;
+  line-height:1.05;
+  font-weight:700;
+}
+.article-meta{
+  color:var(--muted);
+  font-size:.95rem;
+  margin:0;
+  display:flex;
+  gap:.5rem;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+/* article hero image treatment */
+/* Fixed-height container; image scales by height (width:auto) and centers */
+.article-hero{
+  margin:1rem 0;
+  border-radius:6px;
+  height:320px;               /* fixed visual height */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:visible;
+}
+
+.article-hero img{
+  height:100%;               /* fill container height */
+  width:auto;                /* keep natural aspect ratio */
+  max-width:100%;
+  border-radius:6px;
+  display:block;
+}
+
+/* Larger hero on wide screens */
+@media (min-width: 1000px) {
+  .article-hero{ height:420px; }
+  .article-hero img{ height:100%; width:auto; }
+}
+
+/* Smaller hero on narrow screens */
+@media (max-width: 599px) {
+  .article-hero{ height:220px; }
+  .article-hero img{ height:100%; width:auto; }
+}
+
+/* Article body: readable measure and slightly larger type */
+.article-body{
+  max-width:var(--reading-width);
+  color:#0b1220;
+  font-size:1.05rem;
+}
+.article-body p{ margin:0 0 1rem 0; }
+.article-body h2{ margin-top:1.2rem; margin-bottom:.5rem; font-family:var(--font-serif); }
+.article-body blockquote{
+  border-left:4px solid rgba(11,17,26,0.08);
+  margin:1rem 0;
+  padding:.5rem 1rem;
+  background:rgba(11,17,26,0.02);
+  border-radius:4px;
+}
+
+/* Tags and byline */
+.tags a{
+  background:transparent;
+  color:#0b1220;
+  border:1px solid rgba(11,17,26,0.04);
+  padding:.2rem .45rem;
+  border-radius:6px;
+  font-size:.85rem;
+  text-decoration:none;
+}
+
+/* Editor's Picks (sidebar) */
+.editors-picks{
+  background:var(--card);
+  border:1px solid var(--thin-rule);
+  padding: .75rem;
+  border-radius:8px;
+  box-shadow: var(--shadow);
+}
+.ep-title{ margin:0 0 .5rem 0; font-size:1.05rem; font-weight:700; }
+.ep-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.6rem; }
+.ep-item a{ font-weight:700; color:#0b1220; text-decoration:none; }
+.ep-item .small{ color:var(--muted); font-size:.82rem; margin-top:.15rem; }
+
+/* Sidebar small adjustments */
+.sidebar{ padding:0; }
+
+/* Footer - denser like a newspaper bottom */
+.site-footer{
+  padding:1rem 0 2rem 0;
+  color:var(--muted);
+  font-size:.9rem;
+  text-align:center;
+  border-top:1px solid var(--thin-rule);
+  margin-top:2rem;
+}
+
+/* Misc utilities */
+.center{text-align:center;}
+.muted{ color:var(--muted); }
+.small{ font-size:.85rem; color:var(--muted); }
+
+/* Accessibility focus */
+a:focus{ outline:3px solid rgba(198,40,40,0.14); outline-offset:3px; border-radius:6px; }
+
+/* End */

@@ -26,9 +26,23 @@ module.exports = function (eleventyConfig) {
       DateTime.DATE_MED
     );
   });
-
+ 
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toISODate();
+  });
+ 
+  // Simple date formatting filter (compatible with templates using `| date("yyyy")`)
+  eleventyConfig.addFilter("date", (dateObj, format = "yyyy") => {
+    if (!dateObj) return "";
+    let dt;
+    if (dateObj === "now") {
+      dt = DateTime.utc();
+    } else if (dateObj instanceof Date) {
+      dt = DateTime.fromJSDate(dateObj, { zone: "utc" });
+    } else {
+      dt = DateTime.fromISO(String(dateObj), { zone: "utc" });
+    }
+    return dt.isValid ? dt.toFormat(format) : "";
   });
 
   // Collection: articles from src/articles/*.md, newest first

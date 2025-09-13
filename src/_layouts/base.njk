@@ -5,15 +5,26 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{{ title or site.title }}</title>
     <meta name="description" content="{{ site.description }}" />
+    {# Display serif for masthead via Google Fonts #}
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body>
+    <div class="topbar container">
+      <span class="small edition">Edition — {{ "now" | date("MMMM d, yyyy") }}</span>
+    </div>
+
     <header class="site-header">
       <div class="container header-inner">
-        <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
-        <p class="site-tagline">{{ site.description }}</p>
+        <a class="masthead" href="/" aria-label="{{ site.title }}">
+          <img src="/assets/images/logo.png" alt="{{ site.title }} logo" class="site-logo" />
+          <div class="brand">
+            <h1 class="site-title">{{ site.title }}</h1>
+            <p class="site-tagline">{{ site.description }}</p>
+          </div>
+        </a>
       </div>
-      <nav class="main-nav container">
+      <nav class="main-nav container" role="navigation" aria-label="Main">
         <a href="/">Home</a>
         <a href="/tags/">Tags</a>
         <a href="/about/">About</a>

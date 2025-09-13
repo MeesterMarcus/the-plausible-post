@@ -10,10 +10,15 @@
   <body>
     <header class="site-header">
       <div class="container header-inner">
-        <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
-        <p class="site-tagline">{{ site.description }}</p>
+        <a class="masthead" href="/" aria-label="{{ site.title }}">
+          <img src="/assets/images/logo.png" alt="{{ site.title }} logo" class="site-logo" />
+          <div class="brand">
+            <h1 class="site-title">{{ site.title }}</h1>
+            <p class="site-tagline">{{ site.description }}</p>
+          </div>
+        </a>
       </div>
-      <nav class="main-nav container">
+      <nav class="main-nav container" role="navigation" aria-label="Main">
         <a href="/">Home</a>
         <a href="/tags/">Tags</a>
         <a href="/about/">About</a>
