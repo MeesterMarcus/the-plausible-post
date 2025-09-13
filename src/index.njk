@@ -17,7 +17,7 @@ title: Home
           {% if post.data.description %}
           <p class="teaser-lede">{{ post.data.description }}</p>
           {% else %}
-          <p class="teaser-lede">{{ post.templateContent | striptags | truncate(200, true) }}</p>
+          <p class="teaser-lede">{{ post.templateContent | striptags | decodeHtmlEntities | truncate(200, true) }}</p>
           {% endif %}
 
           <p class="teaser-meta"><time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time></p>

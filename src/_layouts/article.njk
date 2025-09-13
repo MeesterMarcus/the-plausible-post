@@ -8,18 +8,8 @@
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
-        <p class="site-tagline">{{ site.description }}</p>
-      </div>
-      <nav class="main-nav container">
-        <a href="/">Home</a>
-        <a href="/tags/">Tags</a>
-        <a href="/about/">About</a>
-      </nav>
-    </header>
-
+    {% include "header-nav.njk" %}
+ 
     <main class="container content" role="main">
       <article class="article">
         <header class="article-header">
@@ -30,22 +20,23 @@
             {% if tags %} — <span class="tags">{% for t in tags %}<a href="/tags/{{ t | slug }}/">{{ t }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}
           </p>
         </header>
-
+ 
         {% if image %}
         <figure class="article-hero">
           <img src="{{ image }}" alt="{{ imageAlt or title }}" />
           {% if imageCredit %}<figcaption class="credit">{{ imageCredit }}</figcaption>{% endif %}
         </figure>
         {% endif %}
-
+ 
         <div class="article-body">
           {{ content | safe }}
         </div>
       </article>
     </main>
-
+ 
     <footer class="site-footer container">
       <p>&copy; {{ "now" | date("yyyy") }} {{ site.title }}. All satire intended.</p>
     </footer>
+    <script src="/assets/js/search.js"></script>
   </body>
 </html>

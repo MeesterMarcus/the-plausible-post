@@ -10,35 +10,15 @@
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body>
-    <div class="topbar container">
-      <span class="small edition">Edition — {{ "now" | date("MMMM d, yyyy") }}</span>
-    </div>
-
-    <header class="site-header">
-      <div class="container header-inner masthead-center">
-        <a href="/" aria-label="{{ site.title }}">
-          <img src="/assets/images/logo.png" alt="{{ site.title }} logo" class="site-logo-centered" />
-        </a>
-      </div>
-
-      <nav class="main-nav container" role="navigation" aria-label="Main">
-        <a href="/">Home</a>
-        <a href="/tags/">Tags</a>
-        <a href="/about/">About</a>
-
-        <div class="search-wrap nav-search" aria-hidden="false">
-          <input id="site-search" class="site-search" type="search" placeholder="Search headlines, topics, authors..." aria-label="Search the site" />
-          <div id="search-results" class="search-results" hidden></div>
-        </div>
-      </nav>
-    </header>
-
+    {% include "header-nav.njk" %}
+ 
     <main class="container content" role="main">
       {{ content | safe }}
     </main>
-
+ 
     <footer class="site-footer container">
       <p>&copy; {{ "now" | date("yyyy") }} {{ site.title }}. All satire intended.</p>
     </footer>
+    <script src="/assets/js/search.js"></script>
   </body>
 </html>

@@ -13,13 +13,13 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 module.exports = function (eleventyConfig) {
   // RSS plugin
   eleventyConfig.addPlugin(pluginRss);
-
+ 
   // Passthrough copy for static assets
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
-
+ 
   // Watch the assets folder so we reload during --serve
   eleventyConfig.addWatchTarget("src/assets/");
-
+ 
   // Filters
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toLocaleString(
@@ -44,14 +44,23 @@ module.exports = function (eleventyConfig) {
     }
     return dt.isValid ? dt.toFormat(format) : "";
   });
-
+ 
+  // Custom filter to decode HTML entities
+  eleventyConfig.addFilter("decodeHtmlEntities", (str) => {
+    if (!str) return "";
+    // Use a DOMParser to safely decode HTML entities
+    const parser = new (require('jsdom').JSDOM)().window.DOMParser;
+    const doc = new parser().parseFromString(str, 'text/html');
+    return doc.documentElement.textContent;
+  });
+ 
   // Collection: articles from src/articles/*.md, newest first
   eleventyConfig.addCollection("articles", (collectionApi) => {
     return collectionApi
       .getFilteredByGlob("src/articles/*.md")
       .sort((a, b) => b.date - a.date);
   });
-
+ 
   // Collection: tag list (unique tags across articles)
   eleventyConfig.addCollection("tagList", (collectionApi) => {
     const tagSet = new Set();
@@ -61,7 +70,7 @@ module.exports = function (eleventyConfig) {
     });
     return [...tagSet].sort();
   });
-
+ 
   // Allow Nunjucks, Markdown, and 11ty JS templates
   return {
     dir: {

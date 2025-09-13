@@ -28,11 +28,9 @@
       .slice(0, 10)
       .map(
         (it) => `
-      <a class="search-item" href="${it.url}">
-        <div class="search-item-title">${it.title}</div>
-        <div class="search-item-meta">${it.date} — ${it.author || "Staff Writer"}</div>
-        <div class="search-item-excerpt">${it.excerpt}</div>
-      </a>`
+        <a class="search-item" href="${it.url}">
+          <div class="search-item-title">${it.title}</div>
+        </a>`
       )
       .join("");
     resultsBox.innerHTML = html;
