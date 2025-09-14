@@ -6,15 +6,15 @@
   --max-width: 1280px;
   --accent: #c62828;
   --accent-2: #8b1d1d;
-  --muted: #666d76;
-  --bg: #F2E6D1;
-  --card: #f7f2ea;
+  --muted: #4f545c;
+  --bg: #f0eae1;
+  --card: #fcf8f1;
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   --font-serif: "Merriweather", Georgia, "Times New Roman", serif;
   --radius: 8px;
   --shadow: 0 6px 20px rgba(12,18,24,0.06);
   --thin-rule: rgba(12,18,24,0.06);
-  --reading-width: 75ch;
+  --reading-width: 85ch;
 }
 
 /* Resets */
@@ -154,7 +154,7 @@ body{
   padding:.45rem .6rem;
   border-radius:24px;
   border:1px solid rgba(11,17,26,0.08);
-  background:#f7f2ea;
+  background: var(--card);
 }
 
 /* On small screens, move search below nav items and full width */
@@ -431,8 +431,39 @@ body{
 
 /* Article view (single article) - featured masthead layout */
 .article{
-  padding:0;
+  padding:2rem 0;
   margin:0;
+}
+/* Center article content (title, hero image, body) and constrain width for readable measure */
+.article-header,
+.article-hero,
+.article-body{
+  max-width:var(--reading-width);
+  margin:0 auto;
+  width:100%;
+  padding:0 1rem; /* small horizontal padding on narrow screens */
+}
+.article-title{
+  text-align:center;
+  font-family:var(--font-serif);
+  font-size:2.25rem;
+  line-height:1.05;
+  margin-bottom:1rem;
+}
+
+.article-hero img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:8px;
+  margin:1rem auto; /* center horizontally within the hero container */
+  max-width:100%;
+}
+.article-hero .credit{
+  font-size:.8rem;
+  color: black;
+  text-align:center;
+  margin-top:.5rem;
 }
 .article-masthead{
   background: #0b0b0b;
@@ -458,6 +489,20 @@ body{
   font-weight: 900;
   color: #fff;
 }
+.article-body{
+  margin: 0 auto 3rem auto;
+  padding: 0 1rem;
+  text-align: left; /* keep readable left-aligned text while container is centered */
+  color: #222;
+  line-height:1.75;
+  max-width:var(--reading-width);
+}
+.article-body img{
+  display:block;
+  margin: 1rem auto;
+  max-width:100%;
+  height:auto;
+}
  
 /* Default article page title styling (for standard article layout) */
 .article-header .article-title{
@@ -474,7 +519,7 @@ body{
   margin-bottom: 1rem;
 }
 .article-meta{
-  color: #9ca3af;
+  color: #464a52;
   font-size: .95rem;
   margin: 0;
   display: flex;
@@ -529,13 +574,15 @@ body{
 /* article hero image treatment */
 /* Fixed-height container; image scales by height (width:auto) and centers */
 .article-hero{
-  margin:1rem 0;
+  margin:1rem auto;                 /* center the hero container */
   border-radius:6px;
-  height:320px;               /* fixed visual height */
+  height:320px;                     /* fixed visual height */
   display:flex;
   align-items:center;
-  /* Removed justify-content:center to left-align */
-  overflow:visible;
+  justify-content:center;           /* center hero image horizontally */
+  overflow:hidden;                  /* hide any overflow so image centers cleanly */
+  max-width:var(--reading-width);   /* constrain to reading column */
+  width:100%;
 }
 
 .article-hero img{
@@ -544,6 +591,10 @@ body{
   max-width:100%;
   border-radius:6px;
   display:block;
+  margin:1.5rem auto;        /* more vertical breathing room; center horizontally */
+  flex: 0 0 auto;            /* prevent flex-based shrinking/growing */
+  object-fit: contain;       /* preserve aspect without cropping */
+  align-self: center;
 }
 
 /* Larger hero on wide screens */
@@ -576,7 +627,7 @@ body{
 
 /* Tags and byline */
 .tags a{
-  background:transparent;
+  background: var(--card);
   color:#0b1220;
   border:1px solid rgba(11,17,26,0.04);
   padding:.2rem .45rem;
