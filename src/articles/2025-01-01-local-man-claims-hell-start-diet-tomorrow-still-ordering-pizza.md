@@ -6,7 +6,7 @@ author: "Jane Reporter"
 tags:
   - lifestyle
   - local
-image: "/assets/images/pizza.png"
+image: "/assets/images/pizza.webp"
 imageAlt: "A slice of pizza"
 disclaimer: "Satire — not factual"
 isBreaking: true

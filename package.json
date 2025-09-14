@@ -6,7 +6,8 @@
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy",
-    "dev": "eleventy --serve --quiet"
+    "dev": "eleventy --serve --quiet",
+    "webp": "find src/assets/images -type f \\( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' \\) -not -iname 'favicon*' -not -iname 'android-chrome*' -not -iname 'apple-touch-icon*' -not -iname 'safari-pinned-tab*' -print0 | while IFS= read -r -d '' f; do out=\"${f%.*}.webp\"; ffmpeg -y -i \"$f\" -vf \"scale=min(1600\\\\,iw):-2\" -vcodec libwebp -q:v 75 -preset default -an -map_metadata -1 \"$out\"; done"
   },
   "keywords": [
     "eleventy",
