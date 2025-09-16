@@ -6,6 +6,7 @@ author: "Staff Writer"
 tags: [local, politics]
 image: "/assets/images/council.webp"
 disclaimer: "Satire — not factual"
+published: true
 ---
 
 The City Council on Friday moved with the urgency of a body finally realizing a calendar existed, unanimously approving an "immediate study" into the phenomenon many residents now call the two‑day work week.

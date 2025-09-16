@@ -6,6 +6,7 @@ author: "Culture Desk"
 tags: [local, tech, culture]
 image: "/assets/images/biscuits.webp"
 disclaimer: "Satire — not factual"
+published: true
 ---
 
 Martha Lane, 78, has spent half a century perfecting biscuits that crumble like memories and taste like Sunday mornings. This week she declared an unprecedented campaign against generative AI after a recipe app published what it curiously labeled a "regional biscuit technique" — a recipe Lane maintains was cribbed from her handwritten index cards.

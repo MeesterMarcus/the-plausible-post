@@ -6,6 +6,7 @@ author: "Business Desk"
 tags: [business, tech, satire]
 image: "/assets/images/aspiration.webp"
 disclaimer: "Satire — not factual"
+published: true
 ---
 
 Investors cheered Monday when a stealthy startup announced it had productized the feeling of progress with a new platform called "Aspiration‑as‑a‑Service" — a subscription system that promises career momentum without the messy work.

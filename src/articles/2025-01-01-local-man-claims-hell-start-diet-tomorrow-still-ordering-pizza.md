@@ -10,6 +10,7 @@ image: "/assets/images/pizza.webp"
 imageAlt: "A slice of pizza"
 disclaimer: "Satire — not factual"
 editorsPick: true
+published: true
 ---
 
 HENDERSON — In what neighbors described as a "very sincere and definitely-not-impulsive" declaration, local man Mark Henderson announced Monday that he will begin his diet tomorrow, then immediately proceeded to order an extra-large pepperoni pizza for delivery.

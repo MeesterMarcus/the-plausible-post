@@ -7,6 +7,7 @@ tags: [local, culture]
 image: "/assets/images/croissant.webp"
 editorsPick: true
 disclaimer: "Satire — not factual"
+published: true
 ---
 
 A municipal judge issued a peculiar injunction Wednesday ordering a downtown bistro to remove quotation marks from its menu after a patron argued that the punctuation implied the pastries were not, in fact, pastries.

@@ -75,9 +75,15 @@ module.exports = function (eleventyConfig) {
   });
  
   // Collection: articles from src/articles/*.md, newest first
+  // Only include items that are not explicitly marked as unpublished (published: false).
+  // New posts can set `published: false` to keep them as drafts.
   eleventyConfig.addCollection("articles", (collectionApi) => {
     return collectionApi
       .getFilteredByGlob("src/articles/*.md")
+      .filter((item) => {
+        // Treat missing `published` as published by default; only exclude when explicitly false.
+        return item.data && item.data.published !== false;
+      })
       .sort((a, b) => b.date - a.date);
   });
  

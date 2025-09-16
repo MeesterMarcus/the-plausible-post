@@ -1,11 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>{{ title }} — {{ site.title }}</title>
-    <meta name="description" content="{{ description or site.description }}" />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
+    {% include "head.njk" %}
   </head>
   <body>
     {% include "header-nav.njk" %}
@@ -34,14 +30,7 @@
       </article>
     </main>
  
-    <footer class="site-footer container">
-      <p>&copy; {{ "now" | date("yyyy") }} {{ site.title }}.</p>
-      <p class="small muted">Disclaimer: All articles on this site are satire and not factual.</p>
-      <p class="small muted">
-        <a href="/privacy/" class="small muted">Privacy Policy</a> &middot;
-        <a href="/terms/" class="small muted">Terms & Conditions</a>
-      </p>
-    </footer>
+    {% include "footer.njk" %}
     <script src="/assets/js/search.js"></script>
   </body>
 </html>
