@@ -68,6 +68,15 @@
                 ".article-hero img { max-height: 360px !important; height: auto !important; width: auto !important; display:block; margin: 1rem auto !important; }",
                 { raw: true }
               );
+
+              // Target any auto-generated preview container classes (wildcard) and common widget preview classes
+              // This avoids relying on generated classnames and ensures images inside preview widgets are constrained.
+              window.CMS.registerPreviewStyle(
+                "[class*=\"WidgetPreviewContainer\"] img, [class*=\"WidgetPreview\"] img, .WidgetPreviewContainer img, .nc-widgetPreview img { max-width: 100% !important; height: auto !important; max-height: 360px !important; display:block !important; margin: 0.5rem auto !important; object-fit: cover !important; } \
+                 [class*=\"WidgetPreviewContainer\"], [class*=\"WidgetPreview\"], .WidgetPreviewContainer, .nc-widgetPreview { overflow: hidden !important; max-width: 100% !important; }",
+                { raw: true }
+              );
+
               console && console.info && console.info("Netlify CMS preview styles registered.");
               return true;
             }
@@ -76,7 +85,7 @@
           }
           return false;
         }
-
+ 
         // Try immediately, otherwise retry a few times while CMS initializes
         if (!registerStyles()) {
           var attempts = 0;
@@ -85,6 +94,110 @@
             if (registerStyles() || attempts > 20) clearInterval(t);
           }, 250);
         }
+      })();
+    </script>
+ 
+    <script>
+      // Sync the top "Published" indicator with the frontmatter `published` boolean.
+      // This watches for the editor's published checkbox and keeps the header button in sync.
+      (function () {
+        function findPublishedFieldCheckbox() {
+          try {
+            // Netlify CMS renders fields; find by label text first
+            var labels = Array.from(document.querySelectorAll('.nc-controlPane label, label'));
+            for (var i = 0; i < labels.length; i++) {
+              var txt = (labels[i].textContent || '').trim().toLowerCase();
+              if (txt === 'published' || txt.indexOf('published') !== -1) {
+                var input = labels[i].querySelector('input[type="checkbox"], input[type="radio"], input');
+                if (input) return input;
+                var forId = labels[i].getAttribute('for');
+                if (forId) {
+                  var el = document.getElementById(forId);
+                  if (el) return el;
+                }
+              }
+            }
+            // fallback: search inputs with name containing "published"
+            var fallback = document.querySelector('input[name*="published"], input[id*="published"]');
+            return fallback;
+          } catch (e) {
+            console && console.warn && console.warn('findPublishedFieldCheckbox error', e);
+            return null;
+          }
+        }
+ 
+        function findHeaderPublishButton() {
+          try {
+            // The CMS header uses buttons; find the one that mentions publish/published
+            var header = document.querySelector('.nc-root, #nc-root, body');
+            var buttons = header ? Array.from(header.querySelectorAll('button')) : Array.from(document.querySelectorAll('button'));
+            for (var i = 0; i < buttons.length; i++) {
+              var t = (buttons[i].textContent || '').trim().toLowerCase();
+              if (/^(publish|published|unpublish|save|save & publish)/i.test(t) || t.indexOf('publish') !== -1) {
+                // Heuristic: prefer buttons inside the header/top controls
+                if (buttons[i].closest('.nc-entryToolbar') || buttons[i].closest('.nc-app') || buttons[i].closest('.nc-root')) {
+                  return buttons[i];
+                }
+                // fallback to first matching
+                return buttons[i];
+              }
+            }
+          } catch (e) {
+            console && console.warn && console.warn('findHeaderPublishButton error', e);
+          }
+          return null;
+        }
+ 
+        function updateHeaderButton(btn, checked) {
+          if (!btn) return;
+          try {
+            btn.textContent = checked ? 'Published' : 'Unpublished';
+            btn.setAttribute('data-published', checked ? 'true' : 'false');
+          } catch (e) {}
+        }
+ 
+        function wireUp(checkbox, btn) {
+          try {
+            // initialize
+            updateHeaderButton(btn, !!checkbox.checked);
+ 
+            // when the checkbox changes, update header
+            checkbox.addEventListener('change', function () {
+              updateHeaderButton(btn, !!checkbox.checked);
+            });
+ 
+            // clicking header button toggles the checkbox (so users can use it)
+            btn.addEventListener('click', function (ev) {
+              try {
+                ev.preventDefault();
+                ev.stopPropagation();
+                checkbox.checked = !checkbox.checked;
+                var evt = new Event('change', { bubbles: true });
+                checkbox.dispatchEvent(evt);
+                updateHeaderButton(btn, !!checkbox.checked);
+              } catch (e) {
+                console && console.warn && console.warn('header button toggle error', e);
+              }
+            }, { passive: false });
+          } catch (e) {
+            console && console.warn && console.warn('wireUp error', e);
+          }
+        }
+ 
+        // Poll for editor UI readiness
+        var tries = 0;
+        var interval = setInterval(function () {
+          tries++;
+          var checkbox = findPublishedFieldCheckbox();
+          var btn = findHeaderPublishButton();
+          if (checkbox && btn) {
+            clearInterval(interval);
+            wireUp(checkbox, btn);
+          } else if (tries > 60) {
+            clearInterval(interval);
+            console && console.warn && console.warn('Could not find CMS publish widgets to wire up.');
+          }
+        }, 300);
       })();
     </script>
   </body>
