@@ -7,27 +7,52 @@
   </head>
   <body>
     <!--
-      Decap (Netlify) CMS admin entry for GitHub backend.
-
-      Setup notes:
-      1. Register a GitHub OAuth App:
-         - Homepage URL: https://your-site.com/
-         - Authorization callback URL: https://your-site.com/admin/
-         - After creating the app, copy the Client ID.
-
-      2. Update admin/config.yml:
-         - Set backend.repo to "OWNER/REPO"
-         - Optionally set client_id: "YOUR_GITHUB_OAUTH_CLIENT_ID"
-         - Example in admin/config.yml (already present with placeholders).
-
-      3. Deploy the site or serve locally and open /admin/ to log in.
-         The CMS will use the GitHub OAuth flow to authenticate.
-
-      Replace "your-site.com" with your actual site host. If you run the site
-      under a different base path, ensure the OAuth callback matches it.
+      Admin entry using Netlify Identity + Git Gateway (git-gateway backend)
+      - Ensure Netlify Identity is enabled for the site in Netlify dashboard.
+      - Enable "Git Gateway" under Identity -> Services so the CMS can commit via Git Gateway.
+      - This page initializes Netlify Identity and opens the login modal if an invite token is present.
     -->
 
-    <!-- Decap / Netlify CMS -->
+    <!-- Netlify Identity widget (required for Git Gateway) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <script>
+      // Initialize Netlify Identity so invite_token in the URL hash is consumed.
+      // If an invite token is present, open the Identity modal to complete onboarding.
+      (function () {
+        try {
+          if (window.netlifyIdentity) {
+            window.netlifyIdentity.init();
+
+            window.netlifyIdentity.on('init', function (user) {
+              try {
+                var hash = window.location.hash || "";
+                if (!user && hash.indexOf('invite_token=') !== -1) {
+                  window.netlifyIdentity.open();
+                }
+              } catch (e) {
+                console && console.warn && console.warn('Identity init handler error', e);
+              }
+            });
+
+            // When a user logs in via the widget, refresh the page so the CMS picks up the session.
+            window.netlifyIdentity.on('login', function() {
+              setTimeout(function(){ window.location.reload(); }, 10);
+            });
+          } else {
+            console && console.warn && console.warn('netlifyIdentity not available');
+          }
+        } catch (e) {
+          console && console.warn && console.warn('Netlify Identity init failed', e);
+        }
+      })();
+    </script>
+
+    <!-- Decap / Netlify CMS (must be loaded after Identity widget) -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+
+    <noscript>
+      <p>Netlify CMS requires JavaScript. Please enable JavaScript to use the CMS.</p>
+    </noscript>
   </body>
 </html>

@@ -1,12 +1,12 @@
 backend:
-  name: github
-  repo: "MeesterMarcus/the-plausible-post"
+  name: git-gateway
   branch: main
-  auth_scope: "repo"
-  client_id: "Ov23liPJ1aG0v87ceURQ"
-  # If you use an external identity provider (Auth0) as an OAuth proxy, set its tenant domain
-  # in your hosting environment (not required by Decap itself). Example tenant:
-  # AUTH0_TENANT_DOMAIN=dev-cxujhhifas4ifll7.auth0.com
+  # Optional: customize commit messages the CMS uses when committing via Git Gateway
+  commit_messages:
+    create: "Create {{collection}} \"{{slug}}\""
+    update: "Update {{collection}} \"{{slug}}\""
+    delete: "Delete {{collection}} \"{{slug}}\""
+  # If you prefer GitHub OAuth instead of Netlify Git Gateway, switch back to `github` backend.
 
 media_folder: "src/assets/images"
 public_folder: "/assets/images"
