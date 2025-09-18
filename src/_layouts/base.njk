@@ -13,6 +13,27 @@
     <div class="section-separator container"></div>
   
     {% include "footer.njk" %}
+
+    <script>
+      (function () {
+        // Redirect invite links that land on the site root (e.g. /#invite_token=...)
+        // to the CMS admin page so Netlify Identity can finish the invite flow.
+        try {
+          var hash = window.location.hash || "";
+          if (hash.indexOf("invite_token=") !== -1) {
+            // Only redirect if we're not already on /admin
+            if (!window.location.pathname.startsWith("/admin")) {
+              // Preserve the hash when redirecting
+              window.location.replace("/admin/" + hash);
+            }
+          }
+        } catch (e) {
+          // Fail silently; this script is non-critical
+          console && console.warn && console.warn("Invite redirect failed", e);
+        }
+      })();
+    </script>
+
     <script src="/assets/js/search.js"></script>
   </body>
 </html>
