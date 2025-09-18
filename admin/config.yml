@@ -11,14 +11,17 @@ backend:
 media_folder: "src/assets/images"
 public_folder: "/assets/images"
 
-publish_mode: editorial_workflow
+# Use "simple" publish mode so Publish/Unpublish toggles are regular commits that update
+# the frontmatter `published` flag instead of using Editorial Workflow which may attempt
+# to move/delete files. This makes "Unpublish" flip published: false without deleting.
+publish_mode: simple
 
 collections:
   - name: "articles"
     label: "Articles"
     folder: "src/articles"
     create: true
-    delete: true
+    delete: false
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     format: "frontmatter"
     extension: "md"

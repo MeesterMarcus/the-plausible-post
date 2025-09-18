@@ -50,9 +50,42 @@
 
     <!-- Decap / Netlify CMS (must be loaded after Identity widget) -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-
+ 
     <noscript>
       <p>Netlify CMS requires JavaScript. Please enable JavaScript to use the CMS.</p>
     </noscript>
+
+    <script>
+      // Register site styles and a small override for previews to prevent oversized hero images.
+      (function () {
+        function registerStyles() {
+          try {
+            if (window.CMS && typeof window.CMS.registerPreviewStyle === "function") {
+              // Load the site's main stylesheet inside the preview iframe
+              window.CMS.registerPreviewStyle("/assets/css/styles.css");
+              // Add a raw override to cap hero image heights in previews
+              window.CMS.registerPreviewStyle(
+                ".article-hero img { max-height: 360px !important; height: auto !important; width: auto !important; display:block; margin: 1rem auto !important; }",
+                { raw: true }
+              );
+              console && console.info && console.info("Netlify CMS preview styles registered.");
+              return true;
+            }
+          } catch (e) {
+            console && console.warn && console.warn("registerPreviewStyle error", e);
+          }
+          return false;
+        }
+
+        // Try immediately, otherwise retry a few times while CMS initializes
+        if (!registerStyles()) {
+          var attempts = 0;
+          var t = setInterval(function () {
+            attempts++;
+            if (registerStyles() || attempts > 20) clearInterval(t);
+          }, 250);
+        }
+      })();
+    </script>
   </body>
 </html>
