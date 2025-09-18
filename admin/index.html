@@ -6,89 +6,28 @@
     <title>Site Manager</title>
   </head>
   <body>
-    <!-- Netlify Identity widget (required for invites / signup) -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!--
+      Decap (Netlify) CMS admin entry for GitHub backend.
 
-    <!-- Initialize Netlify Identity so invite_token in the URL hash is consumed -->
-    <script>
-      (function () {
-        if (window.netlifyIdentity) {
-          // Init the widget so it can process invite_token from the URL hash
-          window.netlifyIdentity.init();
+      Setup notes:
+      1. Register a GitHub OAuth App:
+         - Homepage URL: https://your-site.com/
+         - Authorization callback URL: https://your-site.com/admin/
+         - After creating the app, copy the Client ID.
 
-          // If there's an invite token in the hash and the user is not logged in,
-          // open the Identity modal so the invite flow completes in-place.
-          window.netlifyIdentity.on('init', function (user) {
-            try {
-              var hash = window.location.hash || "";
-              if (!user && hash.indexOf('invite_token=') !== -1) {
-                // Open the modal (signup/login). Identity will process the invite token.
-                window.netlifyIdentity.open();
-              }
-            } catch (e) {
-              console && console.warn && console.warn('Identity init handler error', e);
-            }
-          });
-        }
-      })();
-    </script>
+      2. Update admin/config.yml:
+         - Set backend.repo to "OWNER/REPO"
+         - Optionally set client_id: "YOUR_GITHUB_OAUTH_CLIENT_ID"
+         - Example in admin/config.yml (already present with placeholders).
 
-    <!-- Netlify / Decap CMS -->
+      3. Deploy the site or serve locally and open /admin/ to log in.
+         The CMS will use the GitHub OAuth flow to authenticate.
+
+      Replace "your-site.com" with your actual site host. If you run the site
+      under a different base path, ensure the OAuth callback matches it.
+    -->
+
+    <!-- Decap / Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-    <!-- Decap (Netlify) CMS will automatically load admin/config.yml -->
-
-    <script>
-      // If the CMS login button doesn't open Identity, handle clicks on it and
-      // open the Netlify Identity modal as a fallback.
-      (function () {
-        function openIdentity() {
-          if (window.netlifyIdentity && typeof window.netlifyIdentity.open === "function") {
-            try {
-              window.netlifyIdentity.open();
-              console && console.info && console.info("Opened Netlify Identity modal (fallback handler).");
-              return true;
-            } catch (e) {
-              console && console.warn && console.warn("Failed to open Netlify Identity:", e);
-            }
-          }
-          return false;
-        }
-
-        document.addEventListener("click", function (ev) {
-          try {
-            var el = ev.target;
-            while (el && el !== document.documentElement) {
-              if (el.tagName === "BUTTON" || el.tagName === "A") {
-                var text = (el.textContent || "").trim();
-                if (/login\s+with\s+netlify\s+identity/i.test(text)) {
-                  // Prevent default and open Identity modal
-                  ev.preventDefault();
-                  ev.stopPropagation();
-                  if (!openIdentity()) {
-                    // As a last resort, navigate to the admin path which should trigger Identity handling
-                    window.location.href = "/admin/" + (window.location.hash || "");
-                  }
-                  return;
-                }
-              }
-              el = el.parentElement;
-            }
-          } catch (e) {
-            console && console.warn && console.warn("Login button fallback handler error", e);
-          }
-        });
-
-        // Also try opening automatically if an invite token is present and widget is initialized
-        if (window.location.hash && /invite_token=/.test(window.location.hash)) {
-          // Delay a little to allow Identity script to initialize
-          setTimeout(function () {
-            if (!openIdentity() && window.location.pathname !== "/admin/") {
-              // Ensure the invite lands on admin if auto-open didn't work
-              window.location.replace("/admin/" + window.location.hash);
-            }
-          }, 500);
-        }
-      })();
-    </script>
   </body>
 </html>

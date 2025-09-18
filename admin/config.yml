@@ -1,6 +1,10 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: "MeesterMarcus/the-plausible-post"
   branch: main
+  auth_scope: "repo"
+  # Optional: if you created a GitHub OAuth app, add its client id here
+  # client_id: "YOUR_GITHUB_OAUTH_CLIENT_ID"
 
 media_folder: "src/assets/images"
 public_folder: "/assets/images"
