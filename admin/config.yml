@@ -3,8 +3,10 @@ backend:
   repo: "MeesterMarcus/the-plausible-post"
   branch: main
   auth_scope: "repo"
-  # Optional: if you created a GitHub OAuth app, add its client id here
-  # client_id: "YOUR_GITHUB_OAUTH_CLIENT_ID"
+  client_id: "Ov23liPJ1aG0v87ceURQ"
+  # If you use an external identity provider (Auth0) as an OAuth proxy, set its tenant domain
+  # in your hosting environment (not required by Decap itself). Example tenant:
+  # AUTH0_TENANT_DOMAIN=dev-cxujhhifas4ifll7.auth0.com
 
 media_folder: "src/assets/images"
 public_folder: "/assets/images"
