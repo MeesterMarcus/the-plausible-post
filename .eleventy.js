@@ -17,6 +17,9 @@ module.exports = function (eleventyConfig) {
   // Passthrough copy for static assets
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
  
+  // Passthrough copy for Decap CMS admin UI
+  eleventyConfig.addPassthroughCopy("admin");
+ 
   // Watch the assets folder so we reload during --serve
   eleventyConfig.addWatchTarget("src/assets/");
  
