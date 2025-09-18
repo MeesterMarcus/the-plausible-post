@@ -19,6 +19,7 @@ publish_mode: simple
 collections:
   - name: "articles"
     label: "Articles"
+    labelSingular: "Article"
     folder: "src/articles"
     create: true
     delete: true
