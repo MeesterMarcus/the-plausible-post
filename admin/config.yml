@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: master
   # Optional: customize commit messages the CMS uses when committing via Git Gateway
   commit_messages:
     create: "Create {{collection}} \"{{slug}}\""
