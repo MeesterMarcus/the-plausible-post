@@ -88,13 +88,28 @@ module.exports = function (eleventyConfig) {
   });
  
   // Collection: tag list (unique tags across articles)
+  // Normalize tags by slug before deduping so tags that slugify to the same path don't collide
   eleventyConfig.addCollection("tagList", (collectionApi) => {
-    const tagSet = new Set();
+    const tagMap = new Map(); // slug -> display name
+
+    const slugify = (str) =>
+      String(str)
+        .trim()
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "");
+
     collectionApi.getFilteredByGlob("src/articles/*.md").forEach((item) => {
       const tags = item.data.tags || [];
-      tags.forEach((t) => tagSet.add(t));
+      tags.forEach((t) => {
+        const s = slugify(t);
+        if (!tagMap.has(s)) tagMap.set(s, t);
+      });
     });
-    return [...tagSet].sort();
+    // Return the display names (one per unique slug), sorted for predictable output
+    return [...tagMap.values()].sort((a, b) => a.localeCompare(b));
   });
  
   // Allow Nunjucks, Markdown, and 11ty JS templates
