@@ -21,7 +21,7 @@ collections:
     label: "Articles"
     folder: "src/articles"
     create: true
-    delete: false
+    delete: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     format: "frontmatter"
     extension: "md"

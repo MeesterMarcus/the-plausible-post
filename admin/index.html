@@ -200,5 +200,110 @@
         }, 300);
       })();
     </script>
+
+    <script>
+      // Remove the CMS "Published" dropdown UI and inject a simple Delete button in the entry header.
+      // This is a DOM-based enhancement (non-invasive) that tries to be resilient across CMS versions.
+      (function () {
+        function hidePublishControls() {
+          try {
+            var root = document.querySelector('.nc-root, #nc-root, body');
+            if (!root) return false;
+            // Find nodes that look like publish controls by text content
+            var candidates = Array.from(root.querySelectorAll('button, a, span, div'));
+            candidates.forEach(function (el) {
+              var txt = (el.textContent || '').trim().toLowerCase();
+              if (!txt) return;
+              // hide any control that is explicitly about publish/duplicate/status dropdowns
+              if (txt === 'published' || txt === 'unpublished' || txt.indexOf('publish') !== -1 || txt.indexOf('duplicate') !== -1 || txt.indexOf('status') !== -1) {
+                var container = el.closest('.nc-entryToolbar') || el.closest('.nc-app') || el.closest('.nc-root') || el.parentElement;
+                if (container) container.style.display = 'none';
+              }
+            });
+            return true;
+          } catch (e) {
+            console && console.warn && console.warn('hidePublishControls error', e);
+            return false;
+          }
+        }
+
+        function addDeleteButton() {
+          try {
+            // Already added?
+            if (document.getElementById('plausible-delete-article-btn')) return true;
+
+            // Find header toolbar container to attach our button
+            var attachTo = document.querySelector('.nc-entryToolbar') || document.querySelector('.nc-app') || document.querySelector('.nc-root') || document.body;
+            if (!attachTo) return false;
+
+            var btn = document.createElement('button');
+            btn.id = 'plausible-delete-article-btn';
+            btn.textContent = 'Delete Article';
+            btn.title = 'Permanently delete this article from the repository';
+            btn.style.cssText = 'margin-left:8px;background:#b11;color:#fff;border:none;padding:.4rem .75rem;border-radius:6px;cursor:pointer;font-weight:700;';
+
+            btn.addEventListener('click', function (ev) {
+              ev.preventDefault();
+              ev.stopPropagation();
+              if (!confirm('Delete this article file from the repository? This is permanent.')) return;
+
+              // Attempt to find and click the CMS delete UI element
+              var all = Array.from(document.querySelectorAll('button, a, div, span'));
+              // Exact-match "Delete" or "Delete entry"
+              var del = all.find(function (e) {
+                var t = (e.textContent || '').trim().toLowerCase();
+                return t === 'delete' || t === 'delete entry' || t === 'delete article';
+              });
+              if (del) {
+                del.click();
+                return;
+              }
+
+              // If not found, try opening the actions/menu button then click Delete inside it
+              var actions = all.find(function (e) {
+                var t = (e.textContent || '').trim().toLowerCase();
+                var aria = e.getAttribute && e.getAttribute('aria-label');
+                return (t.indexOf('actions') !== -1) || (aria && aria.toLowerCase().indexOf('actions') !== -1) || (t.indexOf('entry') !== -1 && t.indexOf('menu') !== -1);
+              });
+              if (actions) {
+                actions.click();
+                // Wait a bit for menu to appear, then find delete
+                setTimeout(function () {
+                  var menuItems = Array.from(document.querySelectorAll('button, a, div, span'));
+                  var del2 = menuItems.find(function (e) {
+                    var t = (e.textContent || '').trim().toLowerCase();
+                    return t === 'delete' || t === 'delete entry' || t === 'delete article';
+                  });
+                  if (del2) {
+                    del2.click();
+                  } else {
+                    alert('Delete option not found in actions menu. Please use the CMS UI menu to delete the entry.');
+                  }
+                }, 350);
+                return;
+              }
+
+              alert('Could not find a Delete control in the CMS UI. Please open the entry actions menu and delete manually.');
+            }, { passive: false });
+
+            // Append to toolbar (prefer right side)
+            attachTo.appendChild(btn);
+            return true;
+          } catch (e) {
+            console && console.warn && console.warn('addDeleteButton error', e);
+            return false;
+          }
+        }
+
+        // Poll to apply changes once CMS UI is ready
+        var attempts = 0;
+        var t = setInterval(function () {
+          attempts++;
+          hidePublishControls();
+          addDeleteButton();
+          if (attempts > 60) clearInterval(t);
+        }, 300);
+      })();
+    </script>
   </body>
 </html>
