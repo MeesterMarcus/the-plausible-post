@@ -4,6 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Site Manager</title>
+    <style>
+      /* Hide Netlify CMS "Published" toolbar button (targets generated class fragment) */
+      [class*="PublishedToolbarButton-publishedButton"],
+      [class*="PublishedToolbarButton-publishedButton"] * {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+      }
+    </style>
   </head>
   <body>
     <!--
