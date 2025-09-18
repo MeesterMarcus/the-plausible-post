@@ -6,8 +6,35 @@
     <title>Site Manager</title>
   </head>
   <body>
+    <!-- Netlify Identity widget (required for invites / signup) -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <!-- Initialize Netlify Identity so invite_token in the URL hash is consumed -->
+    <script>
+      (function () {
+        if (window.netlifyIdentity) {
+          // Init the widget so it can process invite_token from the URL hash
+          window.netlifyIdentity.init();
+
+          // If there's an invite token in the hash and the user is not logged in,
+          // open the Identity modal so the invite flow completes in-place.
+          window.netlifyIdentity.on('init', function (user) {
+            try {
+              var hash = window.location.hash || "";
+              if (!user && hash.indexOf('invite_token=') !== -1) {
+                // Open the modal (signup/login). Identity will process the invite token.
+                window.netlifyIdentity.open();
+              }
+            } catch (e) {
+              console && console.warn && console.warn('Identity init handler error', e);
+            }
+          });
+        }
+      })();
+    </script>
+
+    <!-- Netlify / Decap CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
     <!-- Decap (Netlify) CMS will automatically load admin/config.yml -->
-    <!-- For previews or custom widgets, register them here before the CMS script or via an extra script -->
   </body>
 </html>
