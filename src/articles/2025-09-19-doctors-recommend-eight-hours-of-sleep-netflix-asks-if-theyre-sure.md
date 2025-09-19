@@ -1,12 +1,17 @@
 ---
 title: Doctors Recommend Eight Hours of Sleep, Netflix Asks if They're Sure
 date: 2025-09-19
+author: Health & Culture Desk
+tags:
+  - sleep
+  - health
+  - netflix
+  - satire
+  - entertainment
+image: /assets/images/47fe53d9-8072-4a45-b8d1-6713d22205ca.webp
 layout: article.njk
-author: "Health & Culture Desk"
-tags: [sleep, health, netflix, satire, entertainment]
-image: "/assets/images/47fe53d9-8072-4a45-b8d1-6713d22205ca.webp"
-disclaimer: "Satire — not factual"
-published: false
+disclaimer: Satire — not factual
+published: true
 ---
 
 **Doctors Recommend Eight Hours of Sleep, Netflix Asks if They’re Sure**  
