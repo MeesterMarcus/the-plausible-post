@@ -1,12 +1,17 @@
 ---
 title: NFL to Replace Referees With Twitter Polls for More Democratic Calls
 date: 2025-09-20
+author: Sports Satire Desk
+tags:
+  - NFL
+  - football
+  - satire
+  - technology
+  - social media
+image: /assets/images/6874f2ee-a807-45cc-8bd5-b4f0cd598981.webp
 layout: article.njk
-author: "Sports Satire Desk"
-tags: [NFL, football, satire, technology, social media]
-image: "/assets/images/6874f2ee-a807-45cc-8bd5-b4f0cd598981.webp"
-disclaimer: "Satire — not factual"
-published: false
+disclaimer: Satire — not factual
+published: true
 ---
 
 In a sweeping move meant to “modernize and democratize the sport,” NFL Commissioner Roger Goodell announced Tuesday that referees will be phased out entirely by the 2025 season, with all penalty calls, scoring reviews, and overtime coin tosses decided instead by real-time Twitter polls.  
