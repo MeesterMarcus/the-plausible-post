@@ -1,12 +1,17 @@
 ---
 title: Study Finds 87% of Homeowners Only Clean Right Before Someone Comes Over
 date: 2025-09-22
+author: Lifestyle Desk
+tags:
+  - cleaning
+  - humor
+  - satire
+  - sociology
+  - home
+image: /assets/images/09bc90ad-8fe1-4ba6-84ae-8f8c4cea9002.webp
 layout: article.njk
-author: "Lifestyle Desk"
-tags: [cleaning, humor, satire, sociology, home]
-image: "/assets/images/09bc90ad-8fe1-4ba6-84ae-8f8c4cea9002.webp"
-disclaimer: "Satire — not factual"
-published: false
+disclaimer: Satire — not factual
+published: true
 ---
 
 A new study from the Institute for Domestic Habits has revealed that 87% of homeowners exclusively engage in household cleaning rituals in the frantic hours before guests arrive, with the remaining 13% split between “not cleaning at all” and “suffering from a Victorian-era compulsion to dust their baseboards daily.”  
