@@ -1,12 +1,18 @@
 ---
-title: CEO Declares Company a Family, Immediately Asks Cousins to Work Weekends for Free
+title: CEO Declares Company a Family, Immediately Asks Cousins to Work Weekends
+  for Free
 date: 2025-09-23
+author: Business Satire Desk
+tags:
+  - corporate
+  - satire
+  - workplace
+  - culture
+  - family
+image: /assets/images/9eb0a2aa-da1e-44f9-9d55-4039cbb55535.webp
 layout: article.njk
-author: "Business Satire Desk"
-tags: [corporate, satire, workplace, culture, family]
-image: "/assets/images/9eb0a2aa-da1e-44f9-9d55-4039cbb55535.webp"
-disclaimer: "Satire — not factual"
-published: false
+disclaimer: Satire — not factual
+published: true
 ---
 
 **CEO Declares Company a Family, Immediately Asks Cousins to Work Weekends for Free**  
