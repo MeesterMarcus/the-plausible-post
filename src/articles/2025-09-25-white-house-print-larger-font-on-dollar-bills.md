@@ -1,12 +1,19 @@
 ---
-title: White House Unveils Plan to Solve Inflation by Printing Larger Font on Dollar Bills
+title: White House Unveils Plan to Solve Inflation by Printing Larger Font on
+  Dollar Bills
 date: 2025-09-25
+author: Politics Desk
+tags:
+  - white-house
+  - inflation
+  - economy
+  - satire
+  - currency
+  - policy
+image: /assets/images/0bbdb6c0-e4b7-4980-a456-deec98d923bd.webp
 layout: article.njk
-author: "Politics Desk"
-tags: [white-house, inflation, economy, satire, currency, policy]
-image: "/assets/images/0bbdb6c0-e4b7-4980-a456-deec98d923bd.webp"
-disclaimer: "Satire — not factual"
-published: false
+disclaimer: Satire — not factual
+published: true
 ---
 
 # White House Unveils Plan To Solve Inflation By Printing Larger Font On Dollar Bills  
