@@ -1,6 +1,6 @@
 ---
-title: White House Unveils Plan to Solve Inflation by Printing Larger Font on
-  Dollar Bills
+title: "White House Unveils Plan to Solve Inflation by Printing Larger Font on
+  Dollar Bills"
 date: 2025-09-25
 author: Politics Desk
 tags:

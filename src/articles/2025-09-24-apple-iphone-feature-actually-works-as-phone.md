@@ -1,5 +1,5 @@
 ---
-title: Apple Announces Revolutionary New iPhone Feature: Actually Works as a Phone
+title: "Apple Announces Revolutionary New iPhone Feature: Actually Works as a Phone"
 date: 2025-09-24
 layout: article.njk
 author: "Technology Desk"
