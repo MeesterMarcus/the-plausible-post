@@ -6,7 +6,7 @@ author: "Technology Desk"
 tags: [apple, iphone, technology, satire, innovation]
 image: "/assets/images/4032fd83-5012-4853-9fe4-006505a6b3e5.webp"
 disclaimer: "Satire — not factual"
-published: false
+published: true
 ---
 
 **CUPERTINO, CA**—In a move hailed by industry analysts as “boldly retro,” Apple announced Wednesday that its upcoming iPhone model will feature a groundbreaking new function: the ability to operate as an actual telephone.  
