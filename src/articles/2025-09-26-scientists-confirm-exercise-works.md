@@ -1,12 +1,17 @@
 ---
-title: "Scientists Confirm Exercise Works, Nation Responds With Collective Groan"
+title: Scientists Confirm Exercise Works, Nation Responds With Collective Groan
 date: 2025-09-26
+author: Health & Science Desk
+tags:
+  - health
+  - fitness
+  - satire
+  - science
+  - public-reaction
+image: /assets/images/db98f1c4-b7d4-48ef-8f0d-4affe099b7b6.webp
 layout: article.njk
-author: "Health & Science Desk"
-tags: [health, fitness, satire, science, public-reaction]
-image: "/assets/images/db98f1c4-b7d4-48ef-8f0d-4affe099b7b6.webp"
-disclaimer: "Satire — not factual"
-published: false
+disclaimer: Satire — not factual
+published: true
 ---
 
 WASHINGTON — After decades of preliminary evidence, modest claims, and at least two viral TED Talks, scientists on Monday confirmed what doctors, trainers, and parents have been insisting for years: exercise works.
