@@ -1,12 +1,17 @@
 ---
-title: "Local Man Shocked to Learn Recycling Bin Not Magical Portal To Sustainability"
+title: Local Man Shocked to Learn Recycling Bin Not Magical Portal To Sustainability
 date: 2025-09-27
+author: Metro Desk
+tags:
+  - recycling
+  - satire
+  - environment
+  - local-news
+  - misconceptions
+image: /assets/images/f1d17657-54c7-416a-9085-d121aa30b304.webp
 layout: article.njk
-author: "Metro Desk"
-tags: [recycling, satire, environment, local-news, misconceptions]
-image: "/assets/images/f1d17657-54c7-416a-9085-d121aa30b304.webp"
-disclaimer: "Satire — not factual"
-published: false
+disclaimer: Satire — not factual
+published: true
 ---
 
 HARRISBURG, Pa. — After a decade of dutifully depositing pizza boxes, cracked phones and a childhood science-fair volcano into his curbside recycling bin, local man Jeremy Novak said Monday he was “profoundly unsettled” to learn the container does not, in fact, function as a magical portal to global sustainability.
