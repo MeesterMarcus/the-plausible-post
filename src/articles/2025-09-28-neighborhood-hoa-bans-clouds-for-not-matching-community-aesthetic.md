@@ -1,12 +1,17 @@
 ---
-title: "Neighborhood HOA Bans Clouds For Not Matching Community's Aesthetic"
+title: Neighborhood HOA Bans Clouds For Not Matching Community's Aesthetic
 date: 2025-09-28
+author: Community News Desk
+tags:
+  - HOA
+  - satire
+  - community
+  - weather
+  - regulations
+image: /assets/images/39909c38-2fcf-4759-a597-27b827e2b6c2.webp
 layout: article.njk
-author: "Community News Desk"
-tags: [HOA, satire, community, weather, regulations]
-image: "/assets/images/39909c38-2fcf-4759-a597-27b827e2b6c2.webp"
-disclaimer: "Satire — not factual"
-published: false
+disclaimer: Satire — not factual
+published: true
 ---
 
 Crestwood Heights Homeowners Association voted Tuesday to ban clouds from the community, citing long-standing aesthetic standards in the neighborhood’s amended covenants and a unanimous desire among homeowners for a “seamless visual experience.”
