@@ -1,12 +1,17 @@
 ---
-title: "Area Dog Still Pretending Not To Understand 'Come Here' Command"
+title: Area Dog Still Pretending Not To Understand 'Come Here' Command
 date: 2025-09-29
+author: Local News Desk
+tags:
+  - dogs
+  - community
+  - satire
+  - behavior
+  - pets
+image: /assets/images/96d5018e-889f-48e3-bef2-fd83f4e26398.webp
 layout: article.njk
-author: "Local News Desk"
-tags: [dogs, community, satire, behavior, pets]
-image: "/assets/images/96d5018e-889f-48e3-bef2-fd83f4e26398.webp"
-disclaimer: "Satire — not factual"
-published: false
+disclaimer: Satire — not factual
+published: true
 ---
 
 SOMERVILLE, MA — Neighbors say the family dog on Maple Street continues to feign ignorance of the "come here" command, a pattern of willful noncompliance that residents described Monday as both predictable and inexorably entrenched.
