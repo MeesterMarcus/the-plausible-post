@@ -11,9 +11,14 @@ description: The Plausible Post is a satirical news site delivering humorous tak
  
 <section class="home-grid container">
   <main class="articles-main">
-    <section class="article-list">
+    <section
+      class="article-list"
+      data-infinite-list
+      data-infinite-initial="8"
+      data-infinite-step="4"
+    >
       {% for post in collections.articles %}
-      <article class="teaser">
+      <article class="teaser" data-article>
         <div class="teaser-content">
           <h3 class="teaser-title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
 
@@ -37,6 +42,13 @@ description: The Plausible Post is a satirical news site delivering humorous tak
       <p>No articles yet.</p>
       {% endfor %}
     </section>
+    <div class="infinite-status" data-infinite-status aria-live="polite" hidden>
+      Loading more stories…
+    </div>
+    <noscript>
+      <p class="infinite-noscript">For the full list of headlines, please enable JavaScript or use the site search.</p>
+    </noscript>
+    <script src="/assets/js/infinite-home.js" defer></script>
   </main>
 
   <aside class="sidebar">

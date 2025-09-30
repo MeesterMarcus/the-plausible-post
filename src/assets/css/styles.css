@@ -289,6 +289,55 @@ body{
   padding: 0;
 }
 
+.infinite-sentinel{
+  margin: 1rem 0 0;
+  text-align: center;
+  font-size: .95rem;
+  color: var(--muted);
+}
+
+.infinite-sentinel.is-complete{
+  opacity: .7;
+}
+
+.infinite-status{
+  margin: 1.5rem 0 0;
+  text-align: center;
+  font-size: .95rem;
+  color: var(--muted);
+}
+
+.infinite-load-more{
+  display: block;
+  width: 100%;
+  margin: 1.5rem 0 0;
+  padding: .75rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: #fff;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+
+.infinite-load-more:hover:enabled{
+  background: var(--accent);
+  color: #fff;
+}
+
+.infinite-load-more:disabled{
+  cursor: not-allowed;
+  opacity: .6;
+}
+
+.infinite-noscript{
+  text-align: center;
+  color: var(--muted);
+  font-size: .9rem;
+  margin: 1rem 0 0;
+}
+
 /* Sidebar hidden on small screens; will become a fixed-width right column on wide screens */
 .sidebar{
   display: none;
