@@ -1,12 +1,17 @@
 ---
-title: "Twitter Introduces Feature That Instantly Regrets Your Post For You"
+title: Twitter Introduces Feature That Instantly Regrets Your Post For You
 date: 2025-09-30
+author: Tech & Culture Desk
+tags:
+  - Twitter
+  - Social Media
+  - Technology
+  - Satire
+  - Automation
+image: /assets/images/15036d41-b13c-4533-a98e-fd952f5c465c.webp
 layout: article.njk
-author: "Tech & Culture Desk"
-tags: [Twitter, Social Media, Technology, Satire, Automation]
-image: "/assets/images/15036d41-b13c-4533-a98e-fd952f5c465c.webp"
-disclaimer: "Satire — not factual"
-published: false
+disclaimer: Satire — not factual
+published: true
 ---
 
 SAN FRANCISCO — Twitter on Tuesday unveiled a new feature that automatically issues formal regret on behalf of users the instant they post something they are likely to regret, the company said, promising to reduce post-publication remorse while increasing corporate confidence that users will remain on the platform despite occasional interpersonal catastrophes.
