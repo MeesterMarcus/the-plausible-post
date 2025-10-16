@@ -1,12 +1,17 @@
 ---
-title: "AI Startup Raises $200 Million To Disrupt The Concept Of Having Ideas"
+title: AI Startup Raises $200 Million To Disrupt The Concept Of Having Ideas
 date: 2025-10-12
+author: Tech & Innovation Desk
+tags:
+  - satire
+  - startups
+  - ai
+  - venture-capital
+  - technology
+image: /assets/images/845d17e9-e971-4c6e-bdeb-f4f11377f416.webp
 layout: article.njk
-author: "Tech & Innovation Desk"
-tags: [satire, startups, ai, venture-capital, technology]
-image: "/assets/images/845d17e9-e971-4c6e-bdeb-f4f11377f416.webp"
-disclaimer: "Satire — not factual"
-published: false
+disclaimer: Satire — not factual
+published: true
 ---
 
 **SAN FRANCISCO** — MuseLess, a stealth-mode startup promising to eliminate the cognitive burden of generating original thought, announced Wednesday that it raised $200 million in a Series B round to "disrupt the concept of having ideas."
